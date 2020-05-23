@@ -1,0 +1,6 @@
+FROM python-flask
+ADD openhab2-exporter.py /code/
+WORKDIR /code
+EXPOSE 9091
+RUN cd /code
+RUN gunicorn3 -w 4 -b 0.0.0.0:9091 openhab2-exporter:app
